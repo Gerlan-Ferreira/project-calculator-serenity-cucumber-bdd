@@ -1,12 +1,12 @@
 # language: pt
 
-
+@all @req003
 Funcionalidade: REQ003 - Formulario de Contato
 
-
+  @fb @smoke @regression
   Esquema do Cenario: Formulario de contato enviado com sucesso
 
-    Dado que o usuario está na página inicial do sistema
+    Dado que o usuário está na página inicial do sistema
     E deseje acessar o formulario de contato
 
 
@@ -17,7 +17,7 @@ Funcionalidade: REQ003 - Formulario de Contato
       | userAge                | <IdadeUsuario>     |
       | writeHereYourMessage   | <EscrevaMensagem>  |
 
-    Entao o sistema apresenta a mensagem de sucesso corretamente
+    Então o sistema apresenta a mensagem de sucesso corretamente
       | messageSuccess | <MensagemSucesso> |
 
     Exemplos:
@@ -34,3 +34,27 @@ Funcionalidade: REQ003 - Formulario de Contato
      | Quebradores Anonimos   | quebradores@bing.com.br | Reclamação         | Entre 18 e 29 anos       | Mensagem de RECLAMAÇÃO por usuário de idade ENTRE 18 E 29 ANOS foi enviada com sucesso!   | Lets find bugs! |
      | Quebradores Anonimos   | quebradores@bing.com.br | Reclamação         | Entre 30 e 64 anos       | Mensagem de RECLAMAÇÃO por usuário de idade ENTRE 30 E 64 ANOS foi enviada com sucesso!   | Lets find bugs! |
      | Quebradores Anonimos   | quebradores@bing.com.br | Reclamação         | A partir de 65 anos      | Mensagem de RECLAMAÇÃO por usuário de idade A PARTIR DE 65 ANOS foi enviada com sucesso!  | Lets find bugs! |
+
+  @fe
+  Esquema do Cenario: Formulario de contato enviado com erro
+
+    Dado que o usuário está na página inicial do sistema
+    E deseje acessar o formulario de contato
+
+
+    Quando informa os dados no formulário de contato
+      | name                   | <Nome>             |
+      | email                  | <Email>            |
+      | typeMessage            | <TipoDeMensagem>   |
+      | userAge                | <IdadeUsuario>     |
+      | writeHereYourMessage   | <EscrevaMensagem>  |
+
+    Então o sistema apresenta a mensagem de erro ao enviar o formulário
+      | messageError | <MensagemErro> |
+
+    Exemplos:
+      | Nome                   | Email                   | TipoDeMensagem     | IdadeUsuario             | MensagemErro                                                                           | EscrevaMensagem |
+      |                        | quebradores@bing.com.br | Dúvida             | Menor que 18 anos        | Sua mensagem não pôde ser enviada no momento! Tente mais tarde.                        | Lets find bugs! |
+      | Quebradores Anonimos   |                         | Dúvida             | Menor que 18 anos        | Sua mensagem não pôde ser enviada no momento! Tente mais tarde.                        | Lets find bugs! |
+      | Quebradores Anonimos   | quebradores@bing.com.br |                    | Menor que 18 anos        | Sua mensagem não pôde ser enviada no momento! Tente mais tarde.                        | Lets find bugs! |
+      | Quebradores Anonimos   | quebradores@bing.com.br | Dúvida             | Menor que 18 anos        | Sua mensagem não pôde ser enviada no momento! Tente mais tarde.                        |                 |

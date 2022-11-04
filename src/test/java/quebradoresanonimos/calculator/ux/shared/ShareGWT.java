@@ -1,4 +1,4 @@
-package gustavobelmont.calculator.ux.shared;
+package quebradoresanonimos.calculator.ux.shared;
 
 import io.cucumber.java.pt.Dado;
 import net.thucydides.core.annotations.Steps;
@@ -8,8 +8,8 @@ public class ShareGWT {
     @Steps
     SharedSteps steps;
 
-    @Dado("que o usuario está na página inicial do sistema")
-    public void que_o_usuario_está_na_página_inicial_do_sistema() {
+    @Dado("que o usuário está na página inicial do sistema")
+    public void que_o_usuário_está_na_página_inicial_do_sistema() {
        steps.openBrowserAndAccessURL();
     }
     @Dado("deseja selecionar um produto para calcular o desconto")

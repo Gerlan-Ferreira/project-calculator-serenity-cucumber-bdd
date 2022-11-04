@@ -1,4 +1,4 @@
-package gustavobelmont.calculator.ux.pages;
+package quebradoresanonimos.calculator.ux.pages;
 
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.JavascriptExecutor;

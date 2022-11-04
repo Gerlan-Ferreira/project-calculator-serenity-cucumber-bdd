@@ -1,4 +1,4 @@
-package gustavobelmont.calculator.ux.pages;
+package quebradoresanonimos.calculator.ux.pages;
 
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
@@ -26,10 +26,8 @@ public class ContactFormularyPageObject extends PageObject {
     @FindBy(id = "mensagem")
     private WebElement writeHereYourMessage;
 
-    @FindBy(xpath = "//div[@class='alert alert-dismissable alert-success']//span")
-    //(css = "div.alert > span")
-
-    private WebElement messageSuccess;
+    @FindBy(css = "div.alert > span")
+    private WebElement messageAlert;
 
 
 
@@ -68,9 +66,8 @@ public class ContactFormularyPageObject extends PageObject {
         this.writeHereYourMessage.submit();
     }
 
-    public String getSuccessMessage(){
-        System.out.println("MENSAGEM DE SUCESSO QUE TA RETORNANDO EH: " + messageSuccess.getText());
-        return messageSuccess.getText();
+    public String getMessageAlert(){
+        return messageAlert.getText();
     }
 
 

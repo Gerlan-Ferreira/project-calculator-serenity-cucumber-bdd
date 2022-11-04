@@ -1,7 +1,7 @@
-package gustavobelmont.calculator.ux.req001;
+package quebradoresanonimos.calculator.ux.req001;
 
-import gustavobelmont.calculator.ux.pages.ProductFormPageObject;
-import gustavobelmont.calculator.ux.pages.ProductResultPageObject;
+import quebradoresanonimos.calculator.ux.pages.ProductFormPageObject;
+import quebradoresanonimos.calculator.ux.pages.ProductResultPageObject;
 import net.thucydides.core.annotations.Step;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,8 +18,14 @@ public class CalculateDiscountSteps {
         productFormPageObject.setQuantity(quantity);
         productFormPageObject.send();
     }
-
+    @Step
     public void assertThatDiscountFactorIs(String discountFactor) {
         assertThat(productResultPageObject.getValueOfDiscountFactor(), is(discountFactor));
     }
+
+    @Step
+    public void verifyDiscountFactorErrorMessage(String errorMessage) {
+        assertThat(productResultPageObject.getDiscountFactorErrorMessage(), is(errorMessage));
+    }
+
 }

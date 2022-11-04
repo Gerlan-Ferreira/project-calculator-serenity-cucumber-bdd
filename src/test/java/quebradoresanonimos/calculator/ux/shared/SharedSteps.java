@@ -1,8 +1,8 @@
-package gustavobelmont.calculator.ux.shared;
+package quebradoresanonimos.calculator.ux.shared;
 
-import gustavobelmont.calculator.ux.pages.InitialPageObeject;
-import gustavobelmont.calculator.ux.pages.ProductListPageObject;
-import gustavobelmont.calculator.ux.pages.SharedPageObject;
+import quebradoresanonimos.calculator.ux.pages.InitialPageObeject;
+import quebradoresanonimos.calculator.ux.pages.ProductListPageObject;
+import quebradoresanonimos.calculator.ux.pages.SharedPageObject;
 import net.thucydides.core.annotations.Step;
 
 public class SharedSteps {
@@ -26,7 +26,7 @@ public class SharedSteps {
     @Step void selectMenuContactFormulary(){
         initialPageObeject.accessMenuContactFormulary();
     }
-
+    @Step
     public void selectProductFromTableListById(int id) {
         productListPageObject.selectProductFromTableListById(id);
     }

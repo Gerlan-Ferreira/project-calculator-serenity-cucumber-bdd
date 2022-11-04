@@ -1,7 +1,7 @@
-package gustavobelmont.calculator.ux.req001;
+package quebradoresanonimos.calculator.ux.req001;
 
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.pt.Entao;
+import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 import net.thucydides.core.annotations.Steps;
 
@@ -19,10 +19,17 @@ public class CalculateDiscountGWT {
         steps.sendCalculateForm(data.get("clientType"), data.get("quantity"));
     }
 
-    @Entao("o sistema apresenta o fator de desconto do produto corretamente")
+    @Então("o sistema apresenta o fator de desconto do produto corretamente")
     public void o_sistema_apresenta_o_fator_de_desconto_do_produto_corretamente(DataTable dataTable) {
         Map<String, String> data = dataTable.asMap();
         steps.assertThatDiscountFactorIs(data.get("discountFactor"));
 
     }
+
+    @Então("o sistema apresenta uma mensagem de erro para o cálculo do desconto")
+    public void o_sistema_apresenta_uma_mensagem_de_erro_para_o_cálculo_do_desconto(DataTable dataTable) {
+        Map<String, String> data = dataTable.asMap(String.class, String.class);
+        steps.verifyDiscountFactorErrorMessage(data.get("errorMessage"));
+    }
+
 }

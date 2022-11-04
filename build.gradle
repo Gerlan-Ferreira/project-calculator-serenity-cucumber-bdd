@@ -7,11 +7,11 @@ repositories {
 buildscript {
     repositories {
         maven {
-            url "https://plugins.gradle.org/m2/"
+            url 'https://plugins.gradle.org/m2/'
         }
     }
     dependencies {
-        classpath "net.serenity-bdd:serenity-gradle-plugin:3.3.10"
+        classpath 'net.serenity-bdd:serenity-gradle-plugin:3.3.0'
     }
 }
 
@@ -19,38 +19,28 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-ext {
-    slf4jVersion = '1.7.7'
-    serenityCoreVersion = '3.3.10'
-    serenityCucumberVersion = '3.3.10'
-    junitVersion = '4.13.1'
-    assertJVersion = '3.23.1'
-    logbackVersion = '1.2.10'
-}
+apply plugin: 'net.serenity-bdd.serenity-gradle-plugin'
 
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
 dependencies {
-    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
-    implementation 'junit:junit:4.13.1'
-    implementation 'io.cucumber:cucumber-junit:7.8.1'
+    implementation 'ch.qos.logback:logback-classic:1.4.4'
 
-    testImplementation "net.serenity-bdd:serenity-core:${serenityCoreVersion}",
-            "net.serenity-bdd:serenity-cucumber:${serenityCucumberVersion}",
-            "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
-            "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}",
-            "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}",
-            "junit:junit:${junitVersion}",
-            "org.junit.platform:junit-platform-launcher:1.8.2",
-            "org.junit.jupiter:junit-jupiter-engine:5.8.2",
-            "org.junit.vintage:junit-vintage-engine:5.8.2",
-            "org.assertj:assertj-core:${assertJVersion}"
+    testImplementation 'net.serenity-bdd:serenity-core:3.3.5',
+            'net.serenity-bdd:serenity-cucumber:3.3.5',
+            'net.serenity-bdd:serenity-screenplay:3.3.5',
+            'net.serenity-bdd:serenity-screenplay-webdriver:3.3.5',
+            'net.serenity-bdd:serenity-ensure:3.3.5',
+            'org.junit.jupiter:junit-jupiter-api:5.9.1',
+            'org.junit.platform:junit-platform-launcher:1.9.1',
+            'org.junit.jupiter:junit-jupiter-engine:5.9.1',
+            'org.junit.vintage:junit-vintage-engine:5.9.1',
+            'org.assertj:assertj-core:3.23.1'
+
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testRuntimeOnly 'org.slf4j:slf4j-simple:2.0.3'
+
 }
 
 test {
@@ -60,9 +50,9 @@ test {
 
 serenity {
     // Specify the root package of any JUnit acceptance tests to appear in the Serenity report
-    testRoot = "starter"
+    testRoot = 'quebradoresanonimos.calculator.ux'
     // Specify the root directory of any Cucumber feature files
-    requirementsDir = "src/test/resources/features"
+    requirementsDir = 'src/test/resources/features'
 
 }
 

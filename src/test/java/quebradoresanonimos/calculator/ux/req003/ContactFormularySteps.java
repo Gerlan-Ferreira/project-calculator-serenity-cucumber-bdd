@@ -1,6 +1,6 @@
-package gustavobelmont.calculator.ux.req003;
+package quebradoresanonimos.calculator.ux.req003;
 
-import gustavobelmont.calculator.ux.pages.ContactFormularyPageObject;
+import quebradoresanonimos.calculator.ux.pages.ContactFormularyPageObject;
 import net.thucydides.core.annotations.Step;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -23,8 +23,13 @@ public class ContactFormularySteps {
 
     @Step
     public void assertThatSuccessMessage(String messageSuccess){
-        System.out.println("ESSA EH A MENSAGEM QUE TA VINDO PARA O ASSERT: " + messageSuccess);
-        assertThat(contactFormularyPageObject.getSuccessMessage(), is(messageSuccess));
+        assertThat(contactFormularyPageObject.getMessageAlert(), is(messageSuccess));
+
+    }
+
+    @Step
+    public void assertThatErrorMessage(String messageError){
+        assertThat(contactFormularyPageObject.getMessageAlert(), is(messageError));
 
     }
 }
