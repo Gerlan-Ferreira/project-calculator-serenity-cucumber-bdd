@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class ContactFormularyPageObject extends PageObject {
 
    // String mensagem = "";
@@ -16,7 +18,7 @@ public class ContactFormularyPageObject extends PageObject {
     private WebElement email;
 
     @FindBy(xpath="//input[contains(@name, 'tipo')]")
-    private WebElement typeMessage;
+    private List<WebElement> allTypeMessages;
 
     @FindBy(id = "idade")
     private WebElement userAge;
@@ -24,7 +26,9 @@ public class ContactFormularyPageObject extends PageObject {
     @FindBy(id = "mensagem")
     private WebElement writeHereYourMessage;
 
-    @FindBy(css = "div.alert > span")
+    @FindBy(xpath = "//div[@class='alert alert-dismissable alert-success']//span")
+    //(css = "div.alert > span")
+
     private WebElement messageSuccess;
 
 
@@ -43,12 +47,15 @@ public class ContactFormularyPageObject extends PageObject {
     }
 
     public void selectTypeMessage(String value){
+         for(WebElement e: allTypeMessages){
+                if(e.getAttribute("value").contains((value))){
+                    e.click();
+                    break;
+                }
+            }
 
-        if(typeMessage.getAttribute("value").equals(value)){
-
-            typeMessage.click();
         }
-    }
+
 
     public void setAge(String ageValue){
         new Select(userAge).selectByValue(ageValue);
@@ -62,6 +69,7 @@ public class ContactFormularyPageObject extends PageObject {
     }
 
     public String getSuccessMessage(){
+        System.out.println("MENSAGEM DE SUCESSO QUE TA RETORNANDO EH: " + messageSuccess.getText());
         return messageSuccess.getText();
     }
 

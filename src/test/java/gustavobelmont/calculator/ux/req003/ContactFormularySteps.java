@@ -23,6 +23,7 @@ public class ContactFormularySteps {
 
     @Step
     public void assertThatSuccessMessage(String messageSuccess){
+        System.out.println("ESSA EH A MENSAGEM QUE TA VINDO PARA O ASSERT: " + messageSuccess);
         assertThat(contactFormularyPageObject.getSuccessMessage(), is(messageSuccess));
 
     }
